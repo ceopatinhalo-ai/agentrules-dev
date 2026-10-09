@@ -121,16 +121,17 @@
 
     <!-- QUICK ACTIONS -->
     <div class="flex flex-wrap items-center justify-center gap-3 max-w-xl mx-auto mb-8">
-      <a href="downloads/agentrules-free-starter.zip" download class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-gray-200 border border-white/10 transition shadow-sm">
+      <button onclick="openLeadModal()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-gray-200 border border-white/10 transition shadow-sm cursor-pointer">
         <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
         Download Free Starter Pack (.zip)
-      </a>
+      </button>
       <a href="#pricing" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600/20 hover:bg-brand-600/30 text-xs font-semibold text-brand-300 border border-brand-500/30 transition">
         <span>VIP All-Access Lifetime ($29)</span>
         <span>&rarr;</span>
       </a>
     </div>
   </section>
+
 
   <!-- RULES MARKETPLACE GRID -->
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24" id="marketplace">
@@ -380,5 +381,84 @@
 
     init();
   </script>
+
+  <!-- LEAD MAGNET MODAL -->
+  <div id="lead-magnet-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden px-4">
+
+    <div class="relative w-full max-w-lg p-6 bg-[#161b22] border border-cyan-500/30 rounded-2xl shadow-2xl text-white">
+      <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400 font-semibold mb-3 font-mono">
+        🎁 Instant Free Starter Pack
+      </div>
+
+      <h3 class="text-xl font-bold tracking-tight mb-2">Get 4 Production AI Rulesets (.zip)</h3>
+      <p class="text-xs text-slate-400 mb-5">
+        Next.js 15 App Router, FastAPI Clean Architecture, Autonomous ODD Protocol & DevOps Docker bounds. Free instant download:
+      </p>
+
+      <div id="lead-form-fields">
+        <form onsubmit="handleLeadSubmit(event)" class="space-y-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Your Name</label>
+            <input type="text" id="lead-name" required placeholder="Alex Developer" class="w-full px-3 py-2 bg-[#0d1117] border border-slate-700 rounded-lg text-xs text-white focus:border-cyan-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Your Work Email</label>
+            <input type="email" id="lead-email" required placeholder="alex@tech.com" class="w-full px-3 py-2 bg-[#0d1117] border border-slate-700 rounded-lg text-xs text-white focus:border-cyan-500 focus:outline-none">
+          </div>
+          <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold rounded-lg transition text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/20">
+            <span>⚡ Unlock & Download Starter Pack (.zip)</span>
+          </button>
+        </form>
+        <div class="text-center mt-3">
+          <a href="downloads/agentrules-free-starter.zip" download class="text-[11px] text-gray-500 hover:text-gray-300 underline">Or download directly without email</a>
+        </div>
+      </div>
+
+      <div id="lead-success-msg" class="hidden text-center py-4 space-y-3">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto text-xl">✓</div>
+        <h4 class="text-base font-bold text-white">Your Download Has Started!</h4>
+        <p class="text-xs text-slate-400">The 4-pack ZIP has been downloaded to your computer, and we've queued your cheatsheet delivery.</p>
+        <a href="downloads/agentrules-free-starter.zip" download class="inline-block px-4 py-2 bg-white/10 hover:bg-white/20 text-xs rounded-lg text-white font-semibold transition">Click here if download didn't start</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLeadModal() {
+      document.getElementById('lead-magnet-modal').classList.remove('hidden');
+    }
+    function closeLeadModal() {
+      document.getElementById('lead-magnet-modal').classList.add('hidden');
+    }
+    function handleLeadSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('lead-name').value;
+      const email = document.getElementById('lead-email').value;
+      localStorage.setItem('agentrules_lead', JSON.stringify({ name, email, time: new Date().toISOString() }));
+      try {
+        fetch('https://formsubmit.co/ajax/ceopatinhalo@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email, product: 'AgentRules.dev Free Starter Pack' })
+        }).catch(() => {});
+      } catch(err) {}
+
+      document.getElementById('lead-form-fields').classList.add('hidden');
+      document.getElementById('lead-success-msg').classList.remove('hidden');
+
+      const dlLink = document.createElement('a');
+      dlLink.href = 'downloads/agentrules-free-starter.zip';
+      dlLink.download = 'agentrules-free-starter.zip';
+      document.body.appendChild(dlLink);
+      dlLink.click();
+      document.body.removeChild(dlLink);
+      showToast('Free Starter Pack download started!');
+    }
+  </script>
 </body>
 </html>
+
