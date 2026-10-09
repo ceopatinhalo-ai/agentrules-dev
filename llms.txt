@@ -1,0 +1,21 @@
+# AgentRules.dev
+> Curated, production-grade AI coding rulesets and autonomous agent protocols for Cursor (.cursorrules), Claude Code (CLAUDE.md), and Antigravity (AGENTS.md).
+
+## What is AgentRules.dev?
+AgentRules.dev is an open developer marketplace providing battle-tested system prompt rulesets, code hygiene guidelines, and autonomous workflows. It helps developers stop fixing AI hallucinations and reduce code review time by up to 80%.
+
+## Available Rulesets
+- Next.js 15 & Tailwind Fullstack Architect (`01-fullstack-nextjs-tailwind.cursorrules`): Enterprise App Router, Server Actions, TypeScript strict.
+- FastAPI Python Clean Architecture (`02-fastapi-python-clean-architecture.cursorrules`): Python 3.12+, Pydantic v2 strict, SQLAlchemy 2.0 Async, Ruff.
+- Autonomous Agent ODD Protocol (`03-autonomous-agent-odd-protocol.md`): Metaprompt 5-part PRD spec, Red-Green TDD, zero-hallucination execution.
+- Docker & Cloud DevOps Gatekeeper (`04-docker-cloud-devops-gatekeeper.md`): Minimal container builds (<50MB), CI/CD GitHub Actions, zero-downtime releases.
+- Solopreneur Micro-SaaS 48H Launchpad (`05-solopreneur-saas-launchpad.md`): High-velocity 48h launch stack with PayPal USD checkout.
+- AI SEO, GEO & Perplexity Ranker (`06-ai-seo-llmo-perplexity-ranker.md`): High SNR formatting, Schema JSON-LD, llms.txt compliance.
+- iOS & macOS Native SwiftUI Master (`07-ios-swift-swiftui-native.cursorrules`): Swift 6 Concurrency, MVVM-C, Apple HIG, StoreKit 2.
+- PostgreSQL & Supabase Security Guard (`08-database-postgres-supabase-guard.md`): Zero-downtime migrations, Row Level Security (RLS) tenant isolation.
+
+## Pricing & Licenses
+- Free Starter Pack: $0 (Includes 4 essential stacks).
+- VIP All-Access Pass: $29 USD one-time payment for lifetime access and future updates.
+- Payment Gateway: PayPal USD.
+- Publisher: TEMA AI Technologies (https://tema.vn).

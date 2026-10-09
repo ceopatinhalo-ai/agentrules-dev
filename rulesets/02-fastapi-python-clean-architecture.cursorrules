@@ -1,0 +1,31 @@
+# Senior Python & FastAPI Microservice Architecture Standards
+# Target: Cursor (.cursorrules) / Claude Code (CLAUDE.md) / Antigravity (AGENTS.md)
+# Framework: Python 3.12+, FastAPI, Pydantic v2, SQLAlchemy 2.0 Async, Ruff, Pytest
+
+## 1. Clean Architecture & Layering
+- Organize code into explicit domain layers:
+  - `api/v1/`: HTTP routers, request/response controllers, dependency injections.
+  - `schemas/`: Pydantic models for data transfer (DTO) and request validation.
+  - `services/`: Core business logic, orchestrations, third-party API integrations.
+  - `repositories/`: Database queries, ORM interactions, transaction boundaries.
+  - `core/`: Application settings, security utilities, global exception handlers.
+
+## 2. Pydantic v2 & Data Contracts
+- Use `pydantic.BaseModel` with `model_config = ConfigDict(strict=True, from_attributes=True)`.
+- Use `Annotated` for reusable field validation and dependency injection.
+- Keep response schemas strictly typed. Never return raw ORM entities directly to the client.
+
+## 3. Database & Async Operations
+- Use SQLAlchemy 2.0 async sessions (`async with async_session_maker() as session:`).
+- Always use explicit `select()` and `where()` syntax. Avoid deprecated legacy query patterns.
+- Keep all blocking I/O (file system, legacy synchronous SDKs) inside `asyncio.to_thread`.
+
+## 4. Error Handling & OpenAPI Documentation
+- Throw custom domain exceptions from services and map them cleanly in global exception handlers.
+- Return standard RFC 7807 Problem Details or structured JSON: `{ "detail": "...", "code": "..." }`.
+- Document all route status codes, response models, and summary docstrings for automated OpenAPI 3.1 generation.
+
+## 5. Code Quality & Testing (TDD)
+- Code must pass `ruff check` and `ruff format` with zero warnings.
+- Write async integration tests with `pytest-asyncio` and `httpx.AsyncClient`.
+- Maintain test coverage above 90% for services and business logic.

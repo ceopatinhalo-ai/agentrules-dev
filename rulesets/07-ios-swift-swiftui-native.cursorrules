@@ -1,0 +1,18 @@
+# Apple Native iOS & macOS SwiftUI Engineering Standards
+# Targets: iOS 18+, macOS 15+, Swift 6, SwiftUI, SwiftData, StoreKit 2
+
+## 1. Swift 6 Concurrency & Architecture
+- Enable strict concurrency checking (`SWIFT_STRICT_CONCURRENCY = complete`).
+- All UI state updates must happen on `@MainActor`.
+- Prefer structured concurrency (`async/await`, `TaskGroup`) over legacy completion handlers or Combine where possible.
+- Use Modern MVVM or Unidirectional Data Flow (State -> Action -> Reducer). Views must remain declarative and thin.
+
+## 2. SwiftUI UI/UX Standards
+- Respect Apple Human Interface Guidelines (HIG): Use dynamic type, native SF Symbols, and standard margins.
+- Support Dark Mode and Light Mode automatically using semantic system colors (`Color(uiColor: .systemBackground)`).
+- Provide fluid, native haptic feedback (`UIImpactFeedbackGenerator(style: .medium)`) on interactive actions.
+
+## 3. Data Persistence & Monetization
+- Use SwiftData with `@Model` for local offline storage. Never perform heavy database queries inside View bodies.
+- StoreKit 2: Implement modern async transaction listener (`Transaction.updates`) and auto-entitlement verification.
+- Always implement a "Restore Purchases" button visible in settings.

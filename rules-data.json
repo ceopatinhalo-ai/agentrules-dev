@@ -1,0 +1,98 @@
+[
+  {
+    "id": "nextjs-fullstack",
+    "title": "Next.js 15 & Tailwind Fullstack Architect",
+    "description": "Enterprise App Router ruleset with Server Actions, strict TypeScript, Zod validation, and zero-bug error boundaries.",
+    "category": "Frontend",
+    "tier": "Free",
+    "tags": ["Next.js", "TypeScript", "Tailwind", "React"],
+    "downloads": 1420,
+    "rating": 4.9,
+    "filename": "01-fullstack-nextjs-tailwind.cursorrules",
+    "snippet": "# Senior Fullstack Next.js & TypeScript Engineering Standards\n# Framework: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS\n\n## 1. Architecture & Code Organization\n- Always use Next.js App Router (app/ directory).\n- Separate Client and Server Components strictly: Keep components Server Components by default.\n- All data mutations must go through Next.js Server Actions with 'use server'."
+  },
+  {
+    "id": "fastapi-python-clean",
+    "title": "FastAPI Python Clean Architecture",
+    "description": "Production backend standard with Pydantic v2 strict models, SQLAlchemy 2.0 async, Ruff formatting, and OpenAPI 3.1 contracts.",
+    "category": "Backend",
+    "tier": "Free",
+    "tags": ["Python", "FastAPI", "Pydantic", "SQLAlchemy"],
+    "downloads": 980,
+    "rating": 4.95,
+    "filename": "02-fastapi-python-clean-architecture.cursorrules",
+    "snippet": "# Senior Python & FastAPI Microservice Architecture Standards\n# Framework: Python 3.12+, FastAPI, Pydantic v2, SQLAlchemy 2.0 Async\n\n## 1. Clean Architecture & Layering\n- Organize code into explicit domain layers: api/v1/, schemas/, services/, repositories/.\n- Strict Pydantic models with model_config = ConfigDict(strict=True)."
+  },
+  {
+    "id": "autonomous-agent-odd",
+    "title": "Autonomous Agent ODD Protocol (AGENTS.md)",
+    "description": "The battle-tested system prompt turning Cursor and Claude Code into autonomous senior engineers with Metaprompt PRD and TDD verification.",
+    "category": "AI Agents",
+    "tier": "Pro",
+    "tags": ["AI Agents", "AGENTS.md", "TDD", "Metaprompt"],
+    "downloads": 2350,
+    "rating": 5.0,
+    "filename": "03-autonomous-agent-odd-protocol.md",
+    "snippet": "# Autonomous AI Agent Engineering Protocol (ODD & Metaprompt Engine)\n## 1. Core Operating Philosophy\n- Never generate raw code directly from vague user prompts.\n- Translate every request into a formal 5-Part Technical Specification (PRD).\n## 2. Test-Driven Development (TDD) Lifecycle\n- Strictly follow Red-Green-Refactor."
+  },
+  {
+    "id": "docker-devops-gatekeeper",
+    "title": "Docker & Cloud DevOps Gatekeeper",
+    "description": "Production ship-gate ruleset: Multi-stage Docker packaging (<50MB), automated CI/CD GitHub Actions, and zero-downtime release safety.",
+    "category": "DevOps",
+    "tier": "Free",
+    "tags": ["Docker", "DevOps", "CI/CD", "Cloudflare"],
+    "downloads": 840,
+    "rating": 4.85,
+    "filename": "04-docker-cloud-devops-gatekeeper.md",
+    "snippet": "# Cloud & Docker DevOps Gatekeeper Standards\n- Multi-stage Docker builds with alpine/distroless base images.\n- Non-root user execution in production containers.\n- Automated linting, testing, and vulnerability scanning in CI pipelines."
+  },
+  {
+    "id": "solopreneur-saas-launchpad",
+    "title": "Solopreneur Micro-SaaS 48H Launchpad",
+    "description": "High-velocity architecture for building and launching profitable Micro-SaaS in 48 hours with Stripe/PayPal USD checkout and Hormozi CRO.",
+    "category": "Micro-SaaS",
+    "tier": "Pro",
+    "tags": ["Micro-SaaS", "PayPal", "Stripe", "Solopreneur"],
+    "downloads": 1890,
+    "rating": 4.98,
+    "filename": "05-solopreneur-saas-launchpad.md",
+    "snippet": "# Solopreneur Micro-SaaS 48H Launchpad Protocol\n- Single Page Application with embedded checkout flow.\n- Above-the-fold value proposition following Alex Hormozi Grand Slam Offer framework.\n- Automated license key delivery via webhooks."
+  },
+  {
+    "id": "ai-seo-llmo-ranker",
+    "title": "AI SEO, GEO & Perplexity Ranker",
+    "description": "Rank #1 on Perplexity, ChatGPT Search, and Claude citations with semantic markdown structure, Schema JSON-LD, and llms.txt standard.",
+    "category": "Growth",
+    "tier": "Free",
+    "tags": ["SEO", "Perplexity", "LLMO", "Schema"],
+    "downloads": 1150,
+    "rating": 4.92,
+    "filename": "06-ai-seo-llmo-perplexity-ranker.md",
+    "snippet": "# AI SEO & Generative Engine Optimization (GEO)\n- Structure content for machine readability with clear H1-H3 hierarchies.\n- Embed Schema.org JSON-LD structured data on all product and article pages.\n- Maintain an updated /llms.txt file for AI scrapers."
+  },
+  {
+    "id": "ios-swiftui-native",
+    "title": "iOS & macOS Native SwiftUI Master",
+    "description": "Apple HIG compliant architecture with Swift 6 Concurrency, MVVM-C navigation, zero-lag animations, and StoreKit 2 in-app purchases.",
+    "category": "Mobile",
+    "tier": "Pro",
+    "tags": ["SwiftUI", "iOS", "macOS", "StoreKit"],
+    "downloads": 760,
+    "rating": 4.88,
+    "filename": "07-ios-swift-swiftui-native.cursorrules",
+    "snippet": "# Apple Native iOS & macOS SwiftUI Engineering Standards\n- Swift 6 strict concurrency checking enabled.\n- MVVM-C architecture with clean separation of state and view hierarchy.\n- StoreKit 2 modern async purchase workflows."
+  },
+  {
+    "id": "postgres-supabase-guard",
+    "title": "PostgreSQL & Supabase Security Guard",
+    "description": "Database engineering protocol with zero-downtime schema migrations, Row Level Security (RLS) policies, and query indexing optimizations.",
+    "category": "Database",
+    "tier": "Pro",
+    "tags": ["PostgreSQL", "Supabase", "RLS", "SQL"],
+    "downloads": 1310,
+    "rating": 4.96,
+    "filename": "08-database-postgres-supabase-guard.md",
+    "snippet": "# PostgreSQL & Supabase Database Security Guard\n- Zero-downtime schema migrations: never add non-null columns without defaults.\n- Row Level Security (RLS) enabled on 100% of public tables.\n- Explicit indexes on foreign keys and frequently filtered columns."
+  }
+]

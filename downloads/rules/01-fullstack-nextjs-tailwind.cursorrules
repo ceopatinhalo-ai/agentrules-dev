@@ -1,0 +1,33 @@
+# Senior Fullstack Next.js & TypeScript Engineering Standards
+# Target: Cursor (.cursorrules) / Claude Code (CLAUDE.md) / Antigravity (AGENTS.md)
+# Framework: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Shadcn UI
+
+## 1. Architecture & Code Organization
+- Always use Next.js App Router (`app/` directory).
+- Separate Client and Server Components strictly:
+  - Keep components Server Components by default.
+  - Add `'use client'` only when using hooks (`useState`, `useEffect`), browser APIs, or interactivity.
+- Colocate styles, tests, and types near the components when modular.
+- Use kebab-case for directories and file names (e.g., `user-profile-card.tsx`).
+
+## 2. TypeScript & Type Safety
+- Strict type checking enabled at all times. Never use `any`.
+- Define explicit interfaces/types for all Component Props, Server Action payloads, and API responses.
+- Use Zod schemas for runtime validation of all user inputs, environment variables, and external API responses.
+
+## 3. Server Actions & Mutations
+- All data mutations must go through Next.js Server Actions with `'use server'`.
+- Validate inputs inside Server Actions using Zod before any database or service call.
+- Always return consistent response schemas: `{ success: boolean, data?: T, error?: string }`.
+- Call `revalidatePath` or `revalidateTag` immediately after data mutations to keep the UI in sync.
+
+## 4. UI/UX & Tailwind Standards
+- Use Tailwind CSS utility classes; avoid inline styles and raw CSS files unless custom animations require it.
+- Ensure dark mode support using `dark:` variants with semantic variables.
+- Maintain accessible markup: proper ARIA labels, semantic HTML tags (`<header>`, `<main>`, `<section>`, `<nav>`), keyboard navigation.
+- Implement responsive design mobile-first (`sm:`, `md:`, `lg:`, `xl:`).
+
+## 5. Error Handling & Guardrails
+- Implement `error.tsx` and `loading.tsx` for every route segment.
+- Log server-side errors with structured metadata.
+- Never expose sensitive environment variables (`NEXT_PUBLIC_` only for public client keys).
