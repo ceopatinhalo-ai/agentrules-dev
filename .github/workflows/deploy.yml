@@ -1,7 +1,9 @@
-name: Deploy static content to Pages
+name: CI & GitHub Pages Deployment
 
 on:
   push:
+    branches: ["main"]
+  pull_request:
     branches: ["main"]
   workflow_dispatch:
 
@@ -15,20 +17,63 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate-and-test:
+    name: Validate Integrity & JSON Data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check Critical Web & SEO Assets
+        run: |
+          echo "🔍 Kiểm tra tính toàn vẹn của các file web và SEO..."
+          for f in index.html robots.txt sitemap.xml llms.txt; do
+            if [ ! -f "$f" ]; then
+              echo "❌ ERROR: Thiếu file quan trọng $f"
+              exit 1
+            fi
+            echo "✅ Đã kiểm tra: $f"
+          done
+
+      - name: Validate JSON Data Files
+        run: |
+          echo "🔍 Kiểm tra cú pháp tất cả file JSON..."
+          python3 -c "
+import glob, json, sys
+errors = 0
+for filepath in glob.glob('**/*.json', recursive=True):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            json.load(f)
+        print(f'✅ JSON hợp lệ: {filepath}')
+    except Exception as e:
+        print(f'❌ JSON lỗi cú pháp tại {filepath}: {e}', file=sys.stderr)
+        errors += 1
+if errors > 0:
+    sys.exit(1)
+"
+          echo "✅ Tất cả các file dữ liệu JSON đều đạt chuẩn!"
+
   deploy:
+    name: Deploy to GitHub Pages
+    needs: validate-and-test
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
