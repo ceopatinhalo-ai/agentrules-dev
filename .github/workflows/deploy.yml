@@ -38,20 +38,10 @@ jobs:
       - name: Validate JSON Data Files
         run: |
           echo "🔍 Kiểm tra cú pháp tất cả file JSON..."
-          python3 -c "
-import glob, json, sys
-errors = 0
-for filepath in glob.glob('**/*.json', recursive=True):
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            json.load(f)
-        print(f'✅ JSON hợp lệ: {filepath}')
-    except Exception as e:
-        print(f'❌ JSON lỗi cú pháp tại {filepath}: {e}', file=sys.stderr)
-        errors += 1
-if errors > 0:
-    sys.exit(1)
-"
+          for file in $(find . -name "*.json" -not -path "*/.*"); do
+            python3 -m json.tool "$file" > /dev/null
+            echo "✅ JSON hợp lệ: $file"
+          done
           echo "✅ Tất cả các file dữ liệu JSON đều đạt chuẩn!"
 
   deploy:
